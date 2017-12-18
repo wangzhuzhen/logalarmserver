@@ -7,10 +7,10 @@ import (
 
 var routes = types.Routes{
 	types.Route{
-		"Index",
+		"StatusCheck",
 		"GET",
 		"/",
-		handler.Index,
+		handler.StatusCheck,
 	},
 	types.Route{
 		"ListRules",
@@ -19,16 +19,28 @@ var routes = types.Routes{
 		handler.ListRules,
 	},
 	types.Route{
-		"TodoShow",
+		"ListUserRules",
 		"GET",
-		"/todos/{todoId}",
-		handler.TodoShow,
+		"/rules/{ruleowner}",
+		handler.ListUserRules,
+	},
+	types.Route{
+		"UpdateRules",
+		"POST",
+		"/rules/{ruleowner}/{rulename}",
+		handler.UpdateRule,
 	},
 	types.Route{
 		"CreateRule",
 		"POST",
 		"/rules",
 		handler.CreateRule,
+	},
+	types.Route{
+		"DeleteRule",
+		"DEL",
+		"/rules/{ruleowner}/{rulename}",
+		handler.DeleteRule,
 	},
 }
 
