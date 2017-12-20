@@ -9,40 +9,34 @@ var DBname string="wang"
 
 /* 日志报警规则表 */
 type Rule struct {
-	RuleOwner      string        `json:"ruleowner"`
-	RuleName       string        `json:"rulename"`
+	RuleOwner      string        `json:"ruleOwner"`
+	RuleName       string        `json:"ruleName"`
 	KeyWord        string        `json:"keyword"`
-	KeywordIndex   int           `json:"keywordindex"`
-	TimeWindow     int           `json:"timewindow"`
-	ThresholdNum   int           `json:"thresholdnum"`
-	EmailList     string	     `json:"emaillist"`
+	KeywordIndex   int           `json:"keywordIndex"`
 }
 
 /* 日志报警规则的规则所有者和规则名称 */
 type RuleUser struct {
-	RuleOwner string        `json:"ruleowner"`
-	RuleName  string        `json:"rulename"`
+	RuleOwner string        `json:"ruleOwner"`
+	RuleName  string        `json:"ruleName"`
 }
 
 /* 日志报警任务表 */
 type Topology struct {
-	TopologyOwner     string      `json:"topologyowner"`
-	TopologyName      string      `json:"topologyname"`
-	AppName           string      `json:"appname"`
-	Submitted         int         `json:"submitted"`
-	RuleOwner         string      `json:"ruleowner"`
-	RuleName          string      `json:"rulename"`
+	TopologyOwner     string      `json:"topologyOwner"`
+	TopologyName      string      `json:"topologyName"`
+	AppName           string      `json:"appName"`
 	KeyWord           string      `json:"keyword"`
-	KeywordIndex      int         `json:"keywordindex"`
-	TimeWindow        int         `json:"timewindow"`
-	ThresholdNum      int         `json:"thresholdnum"`
-	EmailList         string      `json:"emaillist"`
+	KeywordIndex      int         `json:"keywordIndex"`
+	TimeWindow        int         `json:"timeWindow"`
+	ThresholdNum      int         `json:"thresholdNum"`
+	EmailList         string      `json:"emailList"`
 }
 
 /* 日志报警任务的所有者和任务名称 */
 type TopologyUser struct {
-	TopologyOwner     string      `json:"topologyowner"`
-	TopologyName      string      `json:"topologyname"`
+	TopologyOwner     string      `json:"topologyOwner"`
+	TopologyName      string      `json:"topologyName"`
 }
 
 /* HTTP 路由信息 */

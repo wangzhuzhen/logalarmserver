@@ -9,15 +9,17 @@ import (
 
 
 //调用系统指令的方法，参数s 就是调用的shell命令
-func SubmitTask(s string) {
+func RunTask(s string) bool {
 	cmd := exec.Command("/bin/bash", "-c", s) //调用Command函数
-	var out bytes.Buffer //缓冲字节
+	var out bytes.Buffer
 
-	cmd.Stdout = &out //标准输出
-	err := cmd.Run() //运行指令 ，做判断
+	cmd.Stdout = &out
+	err := cmd.Run()
 	if err != nil {
 		log.Fatal(err)
+		return false
 	}
 	fmt.Printf("%s", out.String()) //输出执行结果
+	return true
 }
 

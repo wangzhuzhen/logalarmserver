@@ -7,7 +7,6 @@ import (
 
 type Routes []types.Route
 
-//var routes = types.Routes{
 var routes = Routes{
 	types.Route{
 		"StatusCheck",    /* 服务状态检查 */
@@ -24,7 +23,7 @@ var routes = Routes{
 	types.Route{
 		"ListUserRules",   /* 查看指定用户的所有报警规则 */
 		"GET",
-		"/rules/{ruleowner}",
+		"/rules/{ruleOwner}",
 		handler.ListUserRules,
 	},
 	types.Route{
@@ -36,13 +35,13 @@ var routes = Routes{
 	types.Route{
 		"UpdateRule",      /* 更新指定用户指定规则名称的报警规则 */
 		"POST",
-		"/rules/{ruleowner}/{rulename}",
+		"/rules/{ruleOwner}/{ruleName}",
 		handler.UpdateRule,
 	},
 	types.Route{
 		"DeleteRule",    /* 删除指定用户指定规则名称的报警规则 */
 		"DEL",
-		"/rules/{ruleowner}/{rulename}",
+		"/rules/{ruleOwner}/{ruleName}",
 		handler.DeleteRule,
 	},
 	types.Route{
@@ -54,32 +53,38 @@ var routes = Routes{
 	types.Route{
 		"ListUserTopologys",    /* 查看指定用户的所有报警任务 */
 		"GET",
-		"/topologys/{topologyowner}",
+		"/topologys/{topologyOwner}",
 		handler.ListUserTopologys,
 	},
-	types.Route{
-		"CreateTopology",     /* 创建新的报警任务 */
-		"POST",
-		"/topologys",
-		handler.CreateTopology,
-	},
+	//types.Route{
+	//	"CreateTopology",     /* 创建新的报警任务 */
+	//	"POST",
+	//	"/topologys",
+	//	handler.CreateTopology,
+	//},
 	types.Route{
 		"UpdateTopology",      /* 更新指定用户指定任务名称的报警任务 */
 		"POST",
-		"/topologys/{topologyowner}/{topologyname}",
+		"/topologys/{topologyOwner}/{topologyName}",
 		handler.UpdateTopology,
 	},
-	types.Route{
-		"DeleteTopology",   /* 删除指定用户指定报警任务名称的报警任务 */
-		"DEL",
-		"/topologys/{topologyowner}/{topologyname}",
-		handler.DeleteTopology,
-	},
+	//types.Route{
+	//	"DeleteTopology",   /* 删除指定用户指定报警任务名称的报警任务 */
+	//	"DEL",
+	//	"/topologys/{topologyOwner}/{topologyName}",
+	//	handler.DeleteTopology,
+	//},
 	types.Route{
 		"SubmitTopology",   /* 提交指定用户指定名称的报警任务 */
 		"POST",
-		"/topologys/{topologyowner}/{topologyname}/submit",
+		"/topologys/submit",
 		handler.SubmitTopology,
+	},
+	types.Route{
+		"KillTopology",   /* 删除指定用户指定名称的报警任务 */
+		"POST",
+		"/topologys/{topologyOwner}/{topologyName}/kill",
+		handler.KillTopology,
 	},
 }
 
