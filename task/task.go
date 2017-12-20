@@ -1,15 +1,15 @@
-package submittopoloy
+package task
 
 import (
-	"bytes"
-	"fmt"
-	"os/exec"
-	"log"
+"bytes"
+"fmt"
+"os/exec"
+"log"
 )
 
 
 //调用系统指令的方法，参数s 就是调用的shell命令
-func SubmitTopolgy(s string) {
+func SubmitTask(s string) {
 	cmd := exec.Command("/bin/bash", "-c", s) //调用Command函数
 	var out bytes.Buffer //缓冲字节
 
@@ -20,3 +20,4 @@ func SubmitTopolgy(s string) {
 	}
 	fmt.Printf("%s", out.String()) //输出执行结果
 }
+

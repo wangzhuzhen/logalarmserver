@@ -6,6 +6,7 @@ import (
 	"log"
 )
 
+/* API 请求操作日志 */
 func Logger(inner http.Handler, name string) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()

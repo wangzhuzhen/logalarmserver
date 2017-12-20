@@ -6,8 +6,7 @@ import (
 	"github.com/wangzhuzhen/logalarmserver/log"
 )
 
-
-
+/* API 请求的重定向 router */
 func NewRouter() *mux.Router {
 
 	router := mux.NewRouter().StrictSlash(true)
