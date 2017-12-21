@@ -2,15 +2,21 @@ package main
 
 import (
 	"net/http"
-	"log"
 	"github.com/wangzhuzhen/logalarmserver/routers"
+	"flag"
+	"github.com/golang/glog"
 )
 
 func main() {
-	println("Starting Logalarm Server")
+	/* 初始化命令行参数 */
+	flag.Parse()
+	/* 退出时调用，确保日志写入文件中 */
+	defer glog.Flush()
+
+	glog.Info("Starting Logalarm Server.......")
 
 	router := routers.NewRouter()
-	log.Fatal(http.ListenAndServe(":8080", router))
+	glog.Fatal(http.ListenAndServe(":8989", router))
 }
 
 
