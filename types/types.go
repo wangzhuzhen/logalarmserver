@@ -5,7 +5,7 @@ import (
 )
 
 /* 报警数据库名称 */
-var DBname string="wang"
+var DBname string="logalarm"
 
 /* 日志报警规则表 */
 type Rule struct {

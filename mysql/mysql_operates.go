@@ -4,10 +4,12 @@ import (
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/wangzhuzhen/logalarmserver/types"
+	"github.com/wangzhuzhen/logalarmserver/utils"
 	"github.com/golang/glog"
 )
 
 /* 连接Mysql数据库 */
+/*
 func ConnectMYSQL() (*sql.DB, error) {
 	/*DSN数据源名称
 	  [username[:password]@][protocol[(address)]]/dbname[?param1=value1¶mN=valueN]
@@ -17,11 +19,28 @@ func ConnectMYSQL() (*sql.DB, error) {
 	  user:password@/dbname
 	  无数据库: user:password@/
 	*/
-	db, err := sql.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/?charset=utf8") //第一个参数为驱动名
+/*	db, err := sql.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/?charset=utf8") //第一个参数为驱动名
 	if err != nil {
 		return nil, err
 	}
 	return db, nil
+}
+*/
+func ConnectMYSQL()  (*sql.DB, error) {
+	var c utils.Conf
+	var err error
+	_, err=c.GetConf()
+	if err !=nil {
+		return nil, err
+	}
+
+	remote := c.User + ":" + c.Password + "@tcp(" + c.MysqlHost + ":" + c.MysqlPort +")/?charset=utf8"
+	db, err := sql.Open("mysql", remote)
+	//db, err := sql.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/?charset=utf8") //第一个参数为驱动名
+	if err != nil {
+		return nil, err
+	}
+	return  db, nil
 }
 
 /* 创建用户数据库 */
