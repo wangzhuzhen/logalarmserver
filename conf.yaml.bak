@@ -1,0 +1,11 @@
+mysql_user: root
+mysql_password: "123456"
+mysql_host: 10.30.100.132
+mysql_port: "13306"
+redis_mastername: TestMaster
+redis_password: "0234kz9*l"
+redis_sentineladdrs: 172.25.3.195:26371,172.25.3.195:26372,172.25.3.195:26373
+redis_db: 9
+jaeger_agent_udp_addr: "localhost:5775"
+jaeger_sampling_server_url: "localhost:5778/sampling"
+

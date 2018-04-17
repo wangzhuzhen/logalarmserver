@@ -1,8 +1,8 @@
 package routers
 
 import (
-	"github.com/wangzhuzhen/logalarmserver/handler"
-	"github.com/wangzhuzhen/logalarmserver/types"
+	"gitlab.com/wangzhuzhen/EFK_component/Build_Images/logalarmserver/logalarmserver/handler"
+	"gitlab.com/wangzhuzhen/EFK_component/Build_Images/logalarmserver/logalarmserver/types"
 )
 
 type Routes []types.Route
@@ -15,76 +15,94 @@ var routes = Routes{
 		handler.StatusCheck,
 	},
 	types.Route{
+		"CreateRule",    /* 创建新的报警规则 */
+		"POST",
+		"/createrule",
+		handler.CreateRule,
+	},
+	types.Route{
 		"ListRules",    /* 查看所有报警规则 */
-		"GET",
-		"/rules",
+		"POST",
+		"/listrules",
 		handler.ListRules,
 	},
 	types.Route{
-		"ListUserRules",   /* 查看指定用户的所有报警规则 */
-		"GET",
-		"/rules/{ruleOwner}",
-		handler.ListUserRules,
-	},
-	types.Route{
-		"CreateRule",    /* 创建新的报警规则 */
+		"ListSingleRules",   /* 查看指定用户的所有报警规则 */
 		"POST",
-		"/rules",
-		handler.CreateRule,
+		"/listrule",
+		handler.ListSingleRule,
 	},
 	types.Route{
 		"UpdateRule",      /* 更新指定用户指定规则名称的报警规则 */
 		"POST",
-		"/rules/{ruleOwner}/{ruleName}",
+		"/updaterule",
 		handler.UpdateRule,
 	},
 	types.Route{
 		"DeleteRule",    /* 删除指定用户指定规则名称的报警规则 */
-		"DEL",
-		"/rules/{ruleOwner}/{ruleName}",
+		"POST",
+		"/deleterule",
 		handler.DeleteRule,
 	},
 	types.Route{
-		"ListTopologys",     /* 查看所有报警任务 */
-		"GET",
-		"/topologys",
-		handler.ListTopologys,
-	},
-	types.Route{
-		"ListUserTopologys",    /* 查看指定用户的所有报警任务 */
-		"GET",
-		"/topologys/{topologyOwner}",
-		handler.ListUserTopologys,
-	},
-	//types.Route{
-	//	"CreateTopology",     /* 创建新的报警任务 */
-	//	"POST",
-	//	"/topologys",
-	//	handler.CreateTopology,
-	//},
-	types.Route{
-		"UpdateTopology",      /* 更新指定用户指定任务名称的报警任务 */
+		"SubmitTasks",   /* 以服务为单位提交提交报警任务 */
 		"POST",
-		"/topologys/{topologyOwner}/{topologyName}",
-		handler.UpdateTopology,
-	},
-	//types.Route{
-	//	"DeleteTopology",   /* 删除指定用户指定报警任务名称的报警任务 */
-	//	"DEL",
-	//	"/topologys/{topologyOwner}/{topologyName}",
-	//	handler.DeleteTopology,
-	//},
-	types.Route{
-		"SubmitTopology",   /* 提交指定用户指定名称的报警任务 */
-		"POST",
-		"/topologys/submit",
-		handler.SubmitTopology,
+		"/submittasks",
+		handler.SubmitTasks,
 	},
 	types.Route{
-		"KillTopology",   /* 删除指定用户指定名称的报警任务 */
+		"ListTasks",     /* 查询报警任务，如果传入参数包含用户ID，则是查询用户的所有报警任务，否则是平台的所有报警任务 */
 		"POST",
-		"/topologys/{topologyOwner}/{topologyName}/kill",
-		handler.KillTopology,
+		"/listtasks",
+		handler.ListTasks,
+	},
+	types.Route{
+		"ListServiceTasks",    /* 查看指定服务的所有报警任务 */
+		"POST",
+		"/listservicetasks",
+		handler.ListServiceTasks,
+	},
+	types.Route{
+		"UpdateTasks",     /* 以服务为单位更新的报警任务 */
+		"POST",
+		"/updateservicetasks",
+		handler.UpdateServiceTasks,
+	},
+	types.Route{
+		"StopTasks",     /* 暂时关闭/停止相关报警任务列表 */
+		"POST",
+		"/stoptasks",
+		handler.StopTasks,
+	},
+	types.Route{
+		"StartTasks",     /* 重新启动之前关闭/停止的报警任务列表 */
+		"POST",
+		"/starttasks",
+		handler.StartTasks,
+	},
+//	types.Route{
+//		"UpdateTask",      /* 更新指定ID的报警任务 */
+//		"POST",
+//		"/updatetask/{taskid}",
+//		handler.UpdateTask,
+//	},
+	types.Route{
+		"DeleteTask",   /* 删除指定ID的报警任务 */
+		"POST",
+		"/deletetask",
+		handler.DeleteTask,
+	},
+	types.Route{
+		"DeleteTasks",   /* 删除指定服务ID的所有报警任务 */
+		"POST",
+		"/deleteservicetasks",
+		handler.DeleteServiceTasks,
+	},
+	types.Route{
+		"ListServices",   /* 根据用户名获取用户已经添加的报警任务的服务列表 */
+		"POST",
+		"/listservices",
+		handler.ListServices,
 	},
 }
 

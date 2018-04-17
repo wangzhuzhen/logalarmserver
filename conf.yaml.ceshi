@@ -1,0 +1,8 @@
+mysql_user: root
+mysql_password: "123456"
+mysql_host: 10.30.100.132
+mysql_port: "13306"
+redis_mastername: TestMaster
+redis_password: "0234kz9*l"
+redis_sentineladdrs: 10.30.100.133:26371,10.30.100.133:26372,10.30.100.133:26373
+redis_db: 9
